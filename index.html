@@ -31,13 +31,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.4/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.4/dist/sweetalert2.all.min.js"></script>
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@2.3.2/css/dataTables.bootstrap5.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/datatables.net-bs5@2.3.2/js/dataTables.bootstrap5.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/datatables.net@2.3.2/js/dataTables.min.js"></script>
+	<link href="https://cdn.datatables.net/v/bs5/dt-2.3.2/b-3.2.4/datatables.min.css" rel="stylesheet" integrity="sha384-MdETHmzEhIvCvmbhbcswmc1u9maUydy/mLnv2HkhyTOwtMVjf7NCQL709yJayG6C" crossorigin="anonymous">
+	<script src="https://cdn.datatables.net/v/bs5/dt-2.3.2/b-3.2.4/datatables.min.js" integrity="sha384-W4gVQNJWKaSAf19WvAt8lqEqSl+7KBm3XDCbx59qj/jPuZRbc9zcdI5jXCmdKyJT" crossorigin="anonymous"></script>
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-buttons-bs5@3.2.4/css/buttons.bootstrap5.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons-bs5@3.2.4/js/buttons.bootstrap5.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/dataTables.buttons.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/buttons.colVis.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/buttons.html5.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/buttons.print.min.js"></script>
@@ -46,40 +42,6 @@
 	
 	<script src="https://cdn.jsdelivr.net/gh/50c02838bd45e31/npm/pdfmake@0.2.7/build/pdfmake.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/50c02838bd45e31/npm/pdfmake@0.2.7/build/vfs_fonts.js"></script>
-    
-    <script>
-      $.LoadingOverlay("show");
-	  document.getElementById("page0").style.display = "none";
-	  document.getElementById("page1").style.display = "none";
-	  document.getElementById("page2").style.display = "none";
-	  document.getElementById("page3").style.display = "none";
-	  document.getElementById("page4").style.display = "none";
-	  document.getElementById("page5").style.display = "none";
-	  document.getElementById("main1").style.display = "none";
-      window.onload = async () => {
-        var forms = document.querySelectorAll("form");
-        for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", event => { event.preventDefault(); }); };
-	  	const res = await fetch("https://api.ipify.org?format=json");
-	  	const data = await res.json();
-	  	const ipCheck = data.ip;
-		console.log(ipCheck);
-	  	document.getElementById("userIpAddress").value = ipCheck;
-	  	const agent = navigator.userAgent;
-	  	const browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
-	  	const osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
-	  	const locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
-		console.log(locations);
-	  	document.getElementById("userAgent").value = locations;
-	  	document.getElementById("main1").style.display = "inline";
-		document.getElementById("page1").style.display = "none";
-		document.getElementById("page2").style.display = "none";
-		document.getElementById("page3").style.display = "none";
-		document.getElementById("page4").style.display = "none";
-		document.getElementById("page5").style.display = "none";
-		document.getElementById("page0").style.display = "inline";
-        $.LoadingOverlay("hide");
-      };
-    </script>
   </head>
   <body>
     <!-- style -->
@@ -342,7 +304,40 @@
     <!-- style -->
 
     <!-- window.onload -->
-      <script>var api = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec"</script>
+      <script>
+        $.LoadingOverlay("show");
+        document.getElementById("page0").style.display = "none";
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").style.display = "none";
+        document.getElementById("page3").style.display = "none";
+        document.getElementById("page4").style.display = "none";
+        document.getElementById("page5").style.display = "none";
+        document.getElementById("main1").style.display = "none";
+        window.onload = async () => {
+          var forms = document.querySelectorAll("form");
+          for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", event => { event.preventDefault(); }); };
+	  	  const res = await fetch("https://api.ipify.org?format=json");
+	  	  const data = await res.json();
+	  	  const ipCheck = data.ip;
+		  console.log(ipCheck);
+	  	  document.getElementById("userIpAddress").value = ipCheck;
+	  	  const agent = navigator.userAgent;
+	  	  const browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
+	  	  const osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
+	  	  const locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
+		  console.log(locations);
+	  	  document.getElementById("userAgent").value = locations;
+	  	  document.getElementById("main1").style.display = "inline";
+		  document.getElementById("page1").style.display = "none";
+		  document.getElementById("page2").style.display = "none";
+		  document.getElementById("page3").style.display = "none";
+		  document.getElementById("page4").style.display = "none";
+		  document.getElementById("page5").style.display = "none";
+		  document.getElementById("page0").style.display = "inline";
+          $.LoadingOverlay("hide");
+        };
+        var api = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec";
+      </script>
     <!-- window.onload -->
 
     <!-- main -->
