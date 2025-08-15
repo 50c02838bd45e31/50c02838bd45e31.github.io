@@ -336,7 +336,6 @@
 		  document.getElementById("page0").style.display = "inline";
           $.LoadingOverlay("hide");
         };
-        var api = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec";
       </script>
     <!-- window.onload -->
 
@@ -399,7 +398,7 @@
             </div>
           </div>
           <br>
-          <div class="container" style="background: #fff;" id="page0">
+          <div class="container" style="background: #fff; display: none;" id="page0">
             <div class="pages" >
               <h3 class="text-center">
                 <b>
@@ -473,11 +472,11 @@
 
     <!-- function page[number]() {} -->
       <script>
-        document.getElementById("sect1").src = api+"?data=1"
-        document.getElementById("sect2").src = api+"?data=2"
-        document.getElementById("sect3").src = api+"?data=3"
-        document.getElementById("sect4").src = api+"?data=4"
-        document.getElementById("sect5").src = api+"?test=post"
+        document.getElementById("sect1").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=1"
+        document.getElementById("sect2").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=2"
+        document.getElementById("sect3").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=3"
+        document.getElementById("sect4").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=4"
+        document.getElementById("sect5").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?test=post"
 		
         function page0() {
           document.getElementById("page1").style.display = "none"
