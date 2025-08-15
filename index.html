@@ -317,7 +317,6 @@
 	  	  var osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
 	  	  var locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
 	  	  document.getElementById("main").style.display = "inline";
-		  document.getElementById("page0").style.display = "inline";
           $.LoadingOverlay("hide");
         }, true);
       </script>
@@ -325,7 +324,7 @@
 
     <!-- main -->
       <div class="container p-3" id="main" style="display: none;">
-		<div>
+		<!-- container -->
           <div class="container" style="background: #fff;">
             <h2 class="text-center" id="headerbar">
               <b>
@@ -382,7 +381,7 @@
             </div>
           </div>
           <br>
-          <div class="container" style="background: #fff; display: none;" id="page0">
+          <div class="container" style="background: #fff;" id="page0">
             <div class="pages" >
               <h3 class="text-center">
                 <b>
@@ -450,7 +449,7 @@
               <iframe class="responsive-iframe" style="display: fixed; align-items: center; justify-content: center; overflow: hidden; width: auto; height: 850px;" id="sect5" src=""></iframe>
             </div>
           </div>
-		</div>
+		<!-- container -->
       </div>
     <!-- main -->
 
