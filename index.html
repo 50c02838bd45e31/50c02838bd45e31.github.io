@@ -306,19 +306,17 @@
     <!-- window.onload -->
       <script>
         $.LoadingOverlay("show");
-        window.onload = async () => {
+        window.onload = async function() {
           var forms = document.querySelectorAll("form");
-          for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", event => { event.preventDefault(); }); };
-	  	  const res = await fetch("https://api.ipify.org?format=json");
-	  	  const data = await res.json();
-	  	  const ipCheck = data.ip;
-		  console.log(ipCheck);
+          for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", function(event) { event.preventDefault(); }); };
+	  	  var res = await fetch("https://api.ipify.org?format=json");
+	  	  var data = await res.json();
+	  	  var ipCheck = data.ip;
 	  	  document.getElementById("userIpAddress").value = ipCheck;
-	  	  const agent = navigator.userAgent;
-	  	  const browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
-	  	  const osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
-	  	  const locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
-		  console.log(locations);
+	  	  var agent = navigator.userAgent;
+	  	  var browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
+	  	  var osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
+	  	  var locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
 	  	  document.getElementById("userAgent").value = locations;
 	  	  document.getElementById("main").style.display = "inline";
 		  document.getElementById("page0").style.display = "inline";
