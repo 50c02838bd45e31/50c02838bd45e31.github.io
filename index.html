@@ -306,13 +306,6 @@
     <!-- window.onload -->
       <script>
         $.LoadingOverlay("show");
-        document.getElementById("page0").style.display = "none";
-        document.getElementById("page1").style.display = "none";
-        document.getElementById("page2").style.display = "none";
-        document.getElementById("page3").style.display = "none";
-        document.getElementById("page4").style.display = "none";
-        document.getElementById("page5").style.display = "none";
-        document.getElementById("main1").style.display = "none";
         window.onload = async () => {
           var forms = document.querySelectorAll("form");
           for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", event => { event.preventDefault(); }); };
@@ -327,12 +320,7 @@
 	  	  const locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
 		  console.log(locations);
 	  	  document.getElementById("userAgent").value = locations;
-	  	  document.getElementById("main1").style.display = "inline";
-		  document.getElementById("page1").style.display = "none";
-		  document.getElementById("page2").style.display = "none";
-		  document.getElementById("page3").style.display = "none";
-		  document.getElementById("page4").style.display = "none";
-		  document.getElementById("page5").style.display = "none";
+	  	  document.getElementById("main").style.display = "inline";
 		  document.getElementById("page0").style.display = "inline";
           $.LoadingOverlay("hide");
         };
@@ -340,8 +328,8 @@
     <!-- window.onload -->
 
     <!-- main -->
-      <div class="container p-3">
-		<div id="main1" style="display: none;">
+      <div class="container p-3" id="main" style="display: none;">
+		<div>
           <div class="container" style="background: #fff;">
             <h2 class="text-center" id="headerbar">
               <b>
