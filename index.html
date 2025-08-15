@@ -306,22 +306,20 @@
     <!-- window.onload -->
       <script>
         $.LoadingOverlay("show");
-        window.onload = async function() {
+        window.addEventListener("load", async function() {
           var forms = document.querySelectorAll("form");
           for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", function(event) { event.preventDefault(); }); };
 	  	  var res = await fetch("https://api.ipify.org?format=json");
 	  	  var data = await res.json();
 	  	  var ipCheck = data.ip;
-	  	  document.getElementById("userIpAddress").value = ipCheck;
 	  	  var agent = navigator.userAgent;
 	  	  var browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
 	  	  var osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
 	  	  var locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
-	  	  document.getElementById("userAgent").value = locations;
 	  	  document.getElementById("main").style.display = "inline";
 		  document.getElementById("page0").style.display = "inline";
           $.LoadingOverlay("hide");
-        };
+        }, true);
       </script>
     <!-- window.onload -->
 
@@ -458,59 +456,59 @@
 
     <!-- function page[number]() {} -->
       <script>
-        document.getElementById("sect1").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=1"
-        document.getElementById("sect2").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=2"
-        document.getElementById("sect3").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=3"
-        document.getElementById("sect4").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=4"
-        document.getElementById("sect5").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?test=post"
+        document.getElementById("sect1").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=1";
+        document.getElementById("sect2").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=2";
+        document.getElementById("sect3").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=3";
+        document.getElementById("sect4").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?data=4";
+        document.getElementById("sect5").src = "https://script.google.com/macros/s/AKfycbwnt98gW2ZVSa-r1kMmwvTSPJgt2eipWw10nY_dqdDLJN_W-y7NsHmfBcW_FMHDeLXM/exec?test=post";
 		
         function page0() {
-          document.getElementById("page1").style.display = "none"
-          document.getElementById("page2").style.display = "none"
-          document.getElementById("page3").style.display = "none"
-          document.getElementById("page4").style.display = "none"
-          document.getElementById("page5").style.display = "none"
-          document.getElementById("page0").style.display = "inline"
+          document.getElementById("page1").style.display = "none";
+          document.getElementById("page2").style.display = "none";
+          document.getElementById("page3").style.display = "none";
+          document.getElementById("page4").style.display = "none";
+          document.getElementById("page5").style.display = "none";
+          document.getElementById("page0").style.display = "inline";
         }
         function page1() {
-          document.getElementById("page0").style.display = "none"
-          document.getElementById("page2").style.display = "none"
-          document.getElementById("page3").style.display = "none"
-          document.getElementById("page4").style.display = "none"
-          document.getElementById("page5").style.display = "none"
-          document.getElementById("page1").style.display = "inline"
+          document.getElementById("page0").style.display = "none";
+          document.getElementById("page2").style.display = "none";
+          document.getElementById("page3").style.display = "none";
+          document.getElementById("page4").style.display = "none";
+          document.getElementById("page5").style.display = "none";
+          document.getElementById("page1").style.display = "inline";
         }
         function page2() {
-          document.getElementById("page0").style.display = "none"
-          document.getElementById("page1").style.display = "none"
-          document.getElementById("page3").style.display = "none"
-          document.getElementById("page4").style.display = "none"
-          document.getElementById("page5").style.display = "none"
-          document.getElementById("page2").style.display = "inline"
+          document.getElementById("page0").style.display = "none";
+          document.getElementById("page1").style.display = "none";
+          document.getElementById("page3").style.display = "none";
+          document.getElementById("page4").style.display = "none";
+          document.getElementById("page5").style.display = "none";
+          document.getElementById("page2").style.display = "inline";
         }
         function page3() {
-          document.getElementById("page0").style.display = "none"
-          document.getElementById("page1").style.display = "none"
-          document.getElementById("page2").style.display = "none"
-          document.getElementById("page4").style.display = "none"
-          document.getElementById("page5").style.display = "none"
-          document.getElementById("page3").style.display = "inline"
+          document.getElementById("page0").style.display = "none";
+          document.getElementById("page1").style.display = "none";
+          document.getElementById("page2").style.display = "none";
+          document.getElementById("page4").style.display = "none";
+          document.getElementById("page5").style.display = "none";
+          document.getElementById("page3").style.display = "inline";
         }
         function page4() {
-          document.getElementById("page0").style.display = "none"
-          document.getElementById("page1").style.display = "none"
-          document.getElementById("page2").style.display = "none"
-          document.getElementById("page3").style.display = "none"
-          document.getElementById("page5").style.display = "none"
-          document.getElementById("page4").style.display = "inline"
+          document.getElementById("page0").style.display = "none";
+          document.getElementById("page1").style.display = "none";
+          document.getElementById("page2").style.display = "none";
+          document.getElementById("page3").style.display = "none";
+          document.getElementById("page5").style.display = "none";
+          document.getElementById("page4").style.display = "inline";
         }
         function page5() {
-          document.getElementById("page0").style.display = "none"
-          document.getElementById("page1").style.display = "none"
-          document.getElementById("page2").style.display = "none"
-          document.getElementById("page3").style.display = "none"
-          document.getElementById("page4").style.display = "none"
-          document.getElementById("page5").style.display = "inline"
+          document.getElementById("page0").style.display = "none";
+          document.getElementById("page1").style.display = "none";
+          document.getElementById("page2").style.display = "none";
+          document.getElementById("page3").style.display = "none";
+          document.getElementById("page4").style.display = "none";
+          document.getElementById("page5").style.display = "inline";
         }
       </script>
     <!-- function page[number]() {} -->
