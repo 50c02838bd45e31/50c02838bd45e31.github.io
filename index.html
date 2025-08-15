@@ -31,14 +31,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.4/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.4/dist/sweetalert2.all.min.js"></script>
 
-	<script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js" integrity="sha384-RZEqG156bBQSxYY9lwjUz/nKVkqYj/QNK9dEjjyJ/EVTO7ndWwk6ZWEkvaKdRm/U" crossorigin="anonymous"></script>
-	<script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.min.js" integrity="sha384-G85lmdZCo2WkHaZ8U1ZceHekzKcg37sFrs4St2+u/r2UtfvSDQmQrkMsEx4Cgv/W" crossorigin="anonymous"></script>
-	<link href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-e4/pU/7fdyaPKtXkqAgHNgoYAb2LNmChhpSuSp8o6saYtS2sP+JZsu8Wy/7mGV7w" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@2.3.2/css/dataTables.bootstrap5.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/datatables.net-bs5@2.3.2/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/datatables.net@2.3.2/js/dataTables.min.js"></script>
 	
-	<script src="https://cdn.datatables.net/buttons/3.2.4/js/dataTables.buttons.min.js" integrity="sha384-W+u8oyKVP+xXIEiQx3Zffi+rKULG3CX+yYaA+Ww6nUjUsL8Pn6fBTE7swLLBtJWQ" crossorigin="anonymous"></script>
-	<script src="https://cdn.datatables.net/buttons/3.2.4/js/buttons.bootstrap5.min.js" integrity="sha384-BdedgzbgcQH1hGtNWLD56fSa7LYUCzyRMuDzgr5+9etd1/W7eT0kHDrsADMmx60k" crossorigin="anonymous"></script>
-	<link href="https://cdn.datatables.net/buttons/3.2.4/css/buttons.bootstrap5.min.css" rel="stylesheet" integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-buttons-bs5@3.2.4/css/buttons.bootstrap5.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons-bs5@3.2.4/js/buttons.bootstrap5.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/dataTables.buttons.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/buttons.colVis.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@3.2.4/js/buttons.html5.min.js"></script>
@@ -50,8 +48,14 @@
 	<script src="https://cdn.jsdelivr.net/gh/50c02838bd45e31/npm/pdfmake@0.2.7/build/vfs_fonts.js"></script>
     
     <script>
-	  $("#main1").hide();
       $.LoadingOverlay("show");
+	  document.getElementById("page0").style.display = "none";
+	  document.getElementById("page1").style.display = "none";
+	  document.getElementById("page2").style.display = "none";
+	  document.getElementById("page3").style.display = "none";
+	  document.getElementById("page4").style.display = "none";
+	  document.getElementById("page5").style.display = "none";
+	  document.getElementById("main1").style.display = "none";
       window.onload = async () => {
         var forms = document.querySelectorAll("form");
         for (var i = 0; i < forms.length; i++) { forms[i].addEventListener("submit", event => { event.preventDefault(); }); };
@@ -59,16 +63,20 @@
 	  	const data = await res.json();
 	  	const ipCheck = data.ip;
 		console.log(ipCheck);
-	  	//  document.getElementById("userIpAddress").value = ipCheck;
-		$("#userIpAddress").val(ipCheck);
+	  	document.getElementById("userIpAddress").value = ipCheck;
 	  	const agent = navigator.userAgent;
 	  	const browserInfo = agent.match(/(Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
 	  	const osInfo = agent.match(/(Windows NT|Windows|Linux|Mac OS|iOS|Android) [\d.]+/);
 	  	const locations = (browserInfo ? browserInfo[0] : "Unknown Browser") + " " + (osInfo ? osInfo[0] : "Unknown OS");
 		console.log(locations);
-	  	//  document.getElementById("userAgent").value = locations;
-		$("#userAgent").val(locations);
-	  	$("#main1").show();
+	  	document.getElementById("userAgent").value = locations;
+	  	document.getElementById("main1").style.display = "inline";
+		document.getElementById("page1").style.display = "none";
+		document.getElementById("page2").style.display = "none";
+		document.getElementById("page3").style.display = "none";
+		document.getElementById("page4").style.display = "none";
+		document.getElementById("page5").style.display = "none";
+		document.getElementById("page0").style.display = "inline";
         $.LoadingOverlay("hide");
       };
     </script>
@@ -468,70 +476,63 @@
       </div>
     <!-- main -->
 
-    <!-- $(document).ready(() => {} / function page[number]() {} -->
+    <!-- function page[number]() {} -->
       <script>
         document.getElementById("sect1").src = api+"?data=1"
         document.getElementById("sect2").src = api+"?data=2"
         document.getElementById("sect3").src = api+"?data=3"
         document.getElementById("sect4").src = api+"?data=4"
         document.getElementById("sect5").src = api+"?test=post"
-        $(document).ready(() => {
-          $("#page1").hide()
-          $("#page2").hide()
-          $("#page3").hide()
-          $("#page4").hide()
-          $("#page5").hide()
-          $("#page0").show()
-        })
+		
         function page0() {
-          $("#page1").hide()
-          $("#page2").hide()
-          $("#page3").hide()
-          $("#page4").hide()
-          $("#page5").hide()
-          $("#page0").show()
+          document.getElementById("page1").style.display = "none"
+          document.getElementById("page2").style.display = "none"
+          document.getElementById("page3").style.display = "none"
+          document.getElementById("page4").style.display = "none"
+          document.getElementById("page5").style.display = "none"
+          document.getElementById("page0").style.display = "inline"
         }
         function page1() {
-          $("#page0").hide()
-          $("#page2").hide()
-          $("#page3").hide()
-          $("#page4").hide()
-          $("#page5").hide()
-          $("#page1").show()
+          document.getElementById("page0").style.display = "none"
+          document.getElementById("page2").style.display = "none"
+          document.getElementById("page3").style.display = "none"
+          document.getElementById("page4").style.display = "none"
+          document.getElementById("page5").style.display = "none"
+          document.getElementById("page1").style.display = "inline"
         }
         function page2() {
-          $("#page0").hide()
-          $("#page1").hide()
-          $("#page3").hide()
-          $("#page4").hide()
-          $("#page5").hide()
-          $("#page2").show()
+          document.getElementById("page0").style.display = "none"
+          document.getElementById("page1").style.display = "none"
+          document.getElementById("page3").style.display = "none"
+          document.getElementById("page4").style.display = "none"
+          document.getElementById("page5").style.display = "none"
+          document.getElementById("page2").style.display = "inline"
         }
         function page3() {
-          $("#page0").hide()
-          $("#page1").hide()
-          $("#page2").hide()
-          $("#page4").hide()
-          $("#page5").hide()
-          $("#page3").show()
+          document.getElementById("page0").style.display = "none"
+          document.getElementById("page1").style.display = "none"
+          document.getElementById("page2").style.display = "none"
+          document.getElementById("page4").style.display = "none"
+          document.getElementById("page5").style.display = "none"
+          document.getElementById("page3").style.display = "inline"
         }
         function page4() {
-          $("#page0").hide()
-          $("#page1").hide()
-          $("#page2").hide()
-          $("#page3").hide()
-          $("#page5").hide()
-          $("#page4").show()
+          document.getElementById("page0").style.display = "none"
+          document.getElementById("page1").style.display = "none"
+          document.getElementById("page2").style.display = "none"
+          document.getElementById("page3").style.display = "none"
+          document.getElementById("page5").style.display = "none"
+          document.getElementById("page4").style.display = "inline"
         }
         function page5() {
-          $("#page0").hide()
-          $("#page1").hide()
-          $("#page2").hide()
-          $("#page3").hide()
-          $("#page4").hide()
-          $("#page5").show()
+          document.getElementById("page0").style.display = "none"
+          document.getElementById("page1").style.display = "none"
+          document.getElementById("page2").style.display = "none"
+          document.getElementById("page3").style.display = "none"
+          document.getElementById("page4").style.display = "none"
+          document.getElementById("page5").style.display = "inline"
         }
       </script>
-    <!-- $(document).ready(() => {} / function page[number]() {} -->
+    <!-- function page[number]() {} -->
 	</body>
 </html>
